@@ -35,7 +35,7 @@
 							"height": 25,
 							"max-width": 77,
 							"max-height": 46,
-							"data": "5x65,20x45,21x0,5x65,20x45,21x0,5x65,11x45,2x11,7x45,21x0,5x65,45,3x11,45,67,6x45,11,7x45,21x0,5x65,3x45,11,16x45,21x0,5x65,15x45,2x11,3x45,21x0,5x65,20x45,21x0,5x65,20x45,21x0,5x65,14x45,11,5x45,21x0,5x65,20x45,21x0,5x65,20x45,21x0,4x65,7x45,11,13x45,21x0,5x65,6x45,11,4x45,2x11,7x45,21x0,5x65,12x45,11,7x45,21x0,5x65,20x45,21x0,5x65,20x45,21x0,5x65,20x45,21x0,5x65,20x45,21x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,2377x0"
+							"data": "5x65,20x45,21x0,5x65,15x45,46,4x45,21x0,5x65,11x45,2x11,7x45,21x0,5x65,45,3x11,45,67,6x45,11,7x45,21x0,5x65,3x45,11,16x45,21x0,5x65,15x45,2x11,3x45,21x0,5x65,8x45,46,8x45,46,2x45,21x0,5x65,20x45,21x0,5x65,14x45,11,5x45,21x0,5x65,20x45,21x0,5x65,20x45,21x0,3x65,46,7x45,11,13x45,21x0,5x65,6x45,11,4x45,2x11,7x45,21x0,5x65,12x45,11,7x45,21x0,5x65,20x45,21x0,4x65,46,20x45,21x0,5x65,17x45,46,2x45,21x0,5x65,4x45,46,15x45,21x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,2377x0"
 						},
 						"tile-width": 32,
 						"tile-height": 32,
@@ -158,7 +158,9 @@
 						"targetUID": 0,
 						"miningDmg": 5,
 						"mining": false,
-						"direction": ""
+						"direction": "",
+						"energyMax": 0,
+						"energyCurrent": 0
 					},
 					"behaviors": {
 						"TileMovement2": {
@@ -180,6 +182,17 @@
 						"ScrollTo": {
 							"properties": {
 								"enabled": true
+							}
+						},
+						"8Direction": {
+							"properties": {
+								"max-speed": 200,
+								"acceleration": 600,
+								"deceleration": 500,
+								"directions": "dir-4",
+								"set-angle": "no",
+								"default-controls": false,
+								"enabled": false
 							}
 						}
 					},

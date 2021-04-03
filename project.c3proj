@@ -101,6 +101,14 @@
 			"author": "Scirra",
 			"version": "r241",
 			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "EightDir",
+			"name": "8 Direction",
+			"author": "Scirra",
+			"version": "r241",
+			"bundled": false
 		}
 	],
 	"uniqueId": "cmjvgefnkb5",
@@ -135,7 +143,6 @@
 					"txtDebug",
 					"txtDebug2",
 					"barEnemyHealth",
-					"strUp",
 					"barBackground",
 					"barGreen"
 				],
@@ -160,6 +167,11 @@
 				],
 				"subfolders": [],
 				"name": "tiles"
+			},
+			{
+				"items": [],
+				"subfolders": [],
+				"name": "objects"
 			}
 		]
 	},
@@ -168,8 +180,7 @@
 	"families": {
 		"items": [
 			"players",
-			"items",
-			"powerUps"
+			"items"
 		],
 		"subfolders": []
 	},

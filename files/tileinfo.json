@@ -124,7 +124,7 @@
                 9
             ],
             [
-                "coal,1|potionHealth,0.5"
+                "coal,0.5|potionHealth,0.5"
             ]
         ],
         [
@@ -503,13 +503,13 @@
         ],
         [
             [
-                ""
+                1
             ],
             [
-                ""
+                15
             ],
             [
-                ""
+                "potionEnergy,0.2"
             ]
         ],
         [

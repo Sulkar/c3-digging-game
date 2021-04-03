@@ -67,7 +67,30 @@
 							"sid": 161764391724445
 						}
 					],
-					"actions": [],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "players",
+							"sid": 774914329398691,
+							"parameters": {
+								"instance-variable": "energyMax",
+								"value": "100"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "players",
+							"sid": 439073084018317,
+							"parameters": {
+								"instance-variable": "energyCurrent",
+								"value": "80"
+							}
+						},
+						{
+							"callFunction": "updateUI",
+							"sid": 366498749494264
+						}
+					],
 					"sid": 756345207687805
 				}
 			],
@@ -450,6 +473,16 @@
 					"text": "function: after Tile is mined, check if TileInfoArray has Loot for this specific Tile"
 				},
 				{
+					"eventType": "variable",
+					"name": "itemsCreated",
+					"type": "boolean",
+					"initialValue": "false",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 672993158147489
+				},
+				{
 					"functionName": "checkItems",
 					"functionDescription": "",
 					"functionCategory": "",
@@ -547,11 +580,62 @@
 												"y": "Tilemap.TileToPositiony(CURRENT_TARGET_TILE_y)",
 												"create-hierarchy": false
 											}
+										},
+										{
+											"id": "set-boolean-eventvar",
+											"objectClass": "System",
+											"sid": 877522993312847,
+											"parameters": {
+												"variable": "itemsCreated",
+												"value": "true"
+											}
 										}
 									],
 									"sid": 625044202701688
 								}
 							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 577515860828890,
+									"parameters": {
+										"variable": "itemsCreated"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-ignoring-input",
+									"objectClass": "players",
+									"sid": 346754626052970,
+									"behaviorType": "TileMovement2",
+									"parameters": {
+										"input": "start-ignoring"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 172312988806176,
+									"parameters": {
+										"seconds": "0.2"
+									}
+								},
+								{
+									"id": "set-ignoring-input",
+									"objectClass": "players",
+									"sid": 200937272215681,
+									"behaviorType": "TileMovement2",
+									"parameters": {
+										"input": "stop-ignoring"
+									}
+								}
+							],
+							"sid": 730055319325282
 						}
 					]
 				},
@@ -871,6 +955,53 @@
 								}
 							],
 							"sid": 550713551600059
+						}
+					]
+				},
+				{
+					"functionName": "updateUI",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 799253769345369,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "barGreen",
+									"sid": 294388227206231,
+									"parameters": {
+										"unique-id": "12"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-image-scale-x",
+									"objectClass": "barGreen",
+									"sid": 954919016331713,
+									"disabled": true,
+									"parameters": {
+										"scale-x": "100 * (players.energyCurrent / players.energyMax)"
+									}
+								},
+								{
+									"id": "set-width",
+									"objectClass": "barGreen",
+									"sid": 882553522900285,
+									"parameters": {
+										"width": "20"
+									}
+								}
+							],
+							"sid": 348805860696915
 						}
 					]
 				}

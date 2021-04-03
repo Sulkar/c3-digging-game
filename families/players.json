@@ -26,6 +26,18 @@
 			"type": "string",
 			"desc": "",
 			"sid": 433092100638131
+		},
+		{
+			"name": "energyMax",
+			"type": "number",
+			"desc": "",
+			"sid": 856506467366878
+		},
+		{
+			"name": "energyCurrent",
+			"type": "number",
+			"desc": "",
+			"sid": 186192813447011
 		}
 	],
 	"behaviorTypes": [
@@ -43,6 +55,11 @@
 			"behaviorId": "scrollto",
 			"name": "ScrollTo",
 			"sid": 404095572523333
+		},
+		{
+			"behaviorId": "EightDir",
+			"name": "8Direction",
+			"sid": 793585724270734
 		}
 	],
 	"effectTypes": [],
