@@ -1,0 +1,355 @@
+{
+	"name": "eGLOBALS",
+	"events": [
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Functions",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "function"
+				},
+				{
+					"functionName": "updateUI",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 111146231298548,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Energy"
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-width",
+									"objectClass": "barYellow",
+									"sid": 933062249416263,
+									"parameters": {
+										"width": "Self.maxWidth * players.energyCurrent/players.energyMax"
+									}
+								},
+								{
+									"id": "set-width",
+									"objectClass": "barRed",
+									"sid": 942546865900128,
+									"parameters": {
+										"width": "Self.maxWidth * players.healthCurrent/players.healthMax"
+									}
+								}
+							],
+							"sid": 454681676269543
+						}
+					]
+				}
+			],
+			"sid": 838638988909885
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Mapped Functions",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 880757391263376
+						}
+					],
+					"actions": [
+						{
+							"id": "map-function",
+							"objectClass": "Functions",
+							"sid": 351518838720275,
+							"parameters": {
+								"name": "\"mappedFunctions\"",
+								"string": "\"updatePlayerEnergy\"",
+								"function": "updatePlayerEnergy"
+							}
+						},
+						{
+							"id": "map-function",
+							"objectClass": "Functions",
+							"sid": 967990635227652,
+							"parameters": {
+								"name": "\"mappedFunctions\"",
+								"string": "\"updatePlayerHealth\"",
+								"function": "updatePlayerHealth"
+							}
+						}
+					],
+					"sid": 612014991646583
+				},
+				{
+					"eventType": "comment",
+					"text": ""
+				},
+				{
+					"functionName": "mapUpdatePlayerStats",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "functionToCall",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 425823433343822
+						},
+						{
+							"name": "playerStat",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 946255710117298
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 965480738436867,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "call-mapped-function",
+									"objectClass": "Functions",
+									"sid": 311989350316981,
+									"parameters": {
+										"name": "\"mappedFunctions\"",
+										"string": "functionToCall",
+										"forward-params": "1"
+									}
+								}
+							],
+							"sid": 425410088247739
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "function"
+				},
+				{
+					"functionName": "updatePlayerEnergy",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "energy",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 394632531235827
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "players",
+							"sid": 429245094567600,
+							"parameters": {
+								"instance-variable": "energyCurrent",
+								"value": "players.energyCurrent + energy"
+							}
+						}
+					],
+					"sid": 538726845137781,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "players",
+									"sid": 984995464885906,
+									"parameters": {
+										"instance-variable": "energyCurrent",
+										"comparison": 2,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "players",
+									"sid": 789198694972457,
+									"parameters": {
+										"instance-variable": "energyCurrent",
+										"value": "0"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "if no energy drain health instead"
+								},
+								{
+									"callFunction": "updatePlayerHealth",
+									"sid": 518195400516416,
+									"parameters": [
+										"energy"
+									]
+								}
+							],
+							"sid": 404437118179681
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 791553569122628
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "players",
+									"sid": 715135772684301,
+									"parameters": {
+										"instance-variable": "energyCurrent",
+										"comparison": 5,
+										"value": "players.energyMax"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "players",
+									"sid": 828621435530306,
+									"parameters": {
+										"instance-variable": "energyCurrent",
+										"value": "players.energyMax"
+									}
+								}
+							],
+							"sid": 139786630535885
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "function"
+				},
+				{
+					"functionName": "updatePlayerHealth",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "health",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 919150005613281
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "players",
+							"sid": 893159076756988,
+							"parameters": {
+								"instance-variable": "healthCurrent",
+								"value": "players.healthCurrent+ health"
+							}
+						}
+					],
+					"sid": 331209437303893,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "players",
+									"sid": 319289497770308,
+									"parameters": {
+										"instance-variable": "healthCurrent",
+										"comparison": 3,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "players",
+									"sid": 829387544309570,
+									"parameters": {
+										"instance-variable": "healthCurrent",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 184851118318059
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 956059446878233
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "players",
+									"sid": 974779850732682,
+									"parameters": {
+										"instance-variable": "healthCurrent",
+										"comparison": 5,
+										"value": "players.healthMax"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "players",
+									"sid": 751204309167086,
+									"parameters": {
+										"instance-variable": "healthCurrent",
+										"value": "players.healthMax"
+									}
+								}
+							],
+							"sid": 471305290146750
+						}
+					]
+				}
+			],
+			"sid": 775159294380335
+		}
+	],
+	"sid": 427592992926662
+}

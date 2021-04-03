@@ -1,14 +1,14 @@
 {
-	"name": "barGreen",
+	"name": "barYellow",
 	"plugin-id": "TiledBg",
-	"sid": 772622885014733,
+	"sid": 711680295193984,
 	"isGlobal": false,
 	"instanceVariables": [
 		{
 			"name": "maxWidth",
 			"type": "number",
 			"desc": "",
-			"sid": 826093578104793
+			"sid": 869513714150530
 		}
 	],
 	"behaviorTypes": [],
@@ -21,7 +21,7 @@
 		"originalSource": "",
 		"exportFormat": "png",
 		"exportQuality": 0.8,
-		"imageSpriteId": 1372703,
+		"imageSpriteId": 5985397,
 		"useCollisionPoly": true
 	}
 }

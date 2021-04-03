@@ -1,5 +1,5 @@
 {
-	"name": "Layout 1",
+	"name": "Game",
 	"layers": [
 		{
 			"name": "Layer 0",
@@ -35,7 +35,7 @@
 							"height": 25,
 							"max-width": 77,
 							"max-height": 46,
-							"data": "5x65,20x45,21x0,5x65,15x45,46,4x45,21x0,5x65,11x45,2x11,7x45,21x0,5x65,45,3x11,45,67,6x45,11,7x45,21x0,5x65,3x45,11,16x45,21x0,5x65,15x45,2x11,3x45,21x0,5x65,8x45,46,8x45,46,2x45,21x0,5x65,20x45,21x0,5x65,14x45,11,5x45,21x0,5x65,20x45,21x0,5x65,20x45,21x0,3x65,46,7x45,11,13x45,21x0,5x65,6x45,11,4x45,2x11,7x45,21x0,5x65,12x45,11,7x45,21x0,5x65,20x45,21x0,4x65,46,20x45,21x0,5x65,17x45,46,2x45,21x0,5x65,4x45,46,15x45,21x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,2377x0"
+							"data": "5x65,20x45,21x0,5x65,15x45,46,4x45,21x0,5x65,11x45,2x11,7x45,21x0,5x65,45,3x11,45,67,6x45,11,7x45,21x0,5x65,3x45,11,16x45,21x0,4x65,46,3x45,46,11x45,2x11,3x45,21x0,4x65,46,8x45,46,8x45,46,2x45,21x0,5x65,20x45,21x0,5x65,14x45,11,5x45,21x0,5x65,20x45,21x0,5x65,20x45,21x0,3x65,46,7x45,11,13x45,21x0,5x65,6x45,11,3x45,46,2x11,7x45,21x0,5x65,12x45,11,7x45,21x0,5x65,20x45,21x0,4x65,46,20x45,21x0,5x65,17x45,46,2x45,21x0,5x65,4x45,46,15x45,21x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,31x0,15x45,2377x0"
 						},
 						"tile-width": 32,
 						"tile-height": 32,
@@ -160,7 +160,9 @@
 						"mining": false,
 						"direction": "",
 						"energyMax": 0,
-						"energyCurrent": 0
+						"energyCurrent": 0,
+						"healthMax": 0,
+						"healthCurrent": 0
 					},
 					"behaviors": {
 						"TileMovement2": {
@@ -201,6 +203,68 @@
 						"y": 144,
 						"width": 32,
 						"height": 32,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "potionEnergy",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 15,
+					"instanceVariables": {
+						"changePlayerStat": "updatePlayerEnergy,50"
+					},
+					"behaviors": {},
+					"world": {
+						"x": 32,
+						"y": -32,
+						"width": 12,
+						"height": 20,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "potionHealth",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 19,
+					"instanceVariables": {
+						"changePlayerStat": "updatePlayerHealth,10"
+					},
+					"behaviors": {},
+					"world": {
+						"x": 64,
+						"y": -32,
+						"width": 12,
+						"height": 20,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -294,11 +358,21 @@
 			},
 			"uid": 10,
 			"instanceVariables": {}
+		},
+		{
+			"type": "ArrayFunctionToCall",
+			"properties": {
+				"width": 0,
+				"height": 1,
+				"depth": 1
+			},
+			"uid": 16,
+			"instanceVariables": {}
 		}
 	],
 	"effectTypes": [],
 	"width": 1000,
 	"height": 800,
 	"unboundedScrolling": false,
-	"eventSheet": "Event sheet 1"
+	"eventSheet": "eGame"
 }

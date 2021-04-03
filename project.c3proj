@@ -32,6 +32,14 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Button",
+			"name": "Button",
+			"author": "Scirra",
+			"version": "r241",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "AJAX",
 			"name": "AJAX",
 			"author": "Scirra",
@@ -144,7 +152,11 @@
 					"txtDebug2",
 					"barEnemyHealth",
 					"barBackground",
-					"barGreen"
+					"barGreen",
+					"btnGameOver",
+					"txtGameOver",
+					"barYellow",
+					"barRed"
 				],
 				"subfolders": [],
 				"name": "UI"
@@ -155,7 +167,8 @@
 					"ArrayItem",
 					"ArrayTileInfo",
 					"Dictionary",
-					"Keyboard"
+					"Keyboard",
+					"ArrayFunctionToCall"
 				],
 				"subfolders": [],
 				"name": "system"
@@ -186,14 +199,17 @@
 	},
 	"layouts": {
 		"items": [
-			"Layout 1",
-			"UI"
+			"Game",
+			"UI",
+			"GameOver"
 		],
 		"subfolders": []
 	},
 	"eventSheets": {
 		"items": [
-			"Event sheet 1"
+			"eGame",
+			"eGameOver",
+			"eGLOBALS"
 		],
 		"subfolders": []
 	},

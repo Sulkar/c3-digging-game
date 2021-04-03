@@ -1,6 +1,10 @@
 {
-	"name": "Event sheet 1",
+	"name": "eGame",
 	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "eGLOBALS"
+		},
 		{
 			"eventType": "variable",
 			"name": "CURRENT_TILE__MAX_LIFE",
@@ -80,10 +84,28 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "players",
-							"sid": 439073084018317,
+							"sid": 337398948769610,
 							"parameters": {
 								"instance-variable": "energyCurrent",
-								"value": "80"
+								"value": "100"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "players",
+							"sid": 250234634893537,
+							"parameters": {
+								"instance-variable": "healthMax",
+								"value": "100"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "players",
+							"sid": 492685014612804,
+							"parameters": {
+								"instance-variable": "healthCurrent",
+								"value": "100"
 							}
 						},
 						{
@@ -160,6 +182,18 @@
 								{
 									"callFunction": "resetMining",
 									"sid": 129498175144940
+								},
+								{
+									"callFunction": "mapUpdatePlayerStats",
+									"sid": 959481231649190,
+									"parameters": [
+										"\"updatePlayerEnergy\"",
+										"-5"
+									]
+								},
+								{
+									"callFunction": "updateUI",
+									"sid": 576653103202888
 								}
 							],
 							"sid": 767961155718068
@@ -640,6 +674,10 @@
 					]
 				},
 				{
+					"eventType": "comment",
+					"text": "Event: Players touches item"
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -651,14 +689,52 @@
 							}
 						}
 					],
-					"actions": [
+					"actions": [],
+					"sid": 193685439282097,
+					"children": [
 						{
-							"id": "destroy",
-							"objectClass": "items",
-							"sid": 181178199077666
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "items",
+									"sid": 509322272054335,
+									"parameters": {
+										"instance-variable": "changePlayerStat",
+										"comparison": 1,
+										"value": "\"\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "mapUpdatePlayerStats",
+									"sid": 187767657084863,
+									"parameters": [
+										"tokenat(items.changePlayerStat,0,\",\")",
+										"int(tokenat(items.changePlayerStat,1,\",\"))"
+									]
+								},
+								{
+									"callFunction": "updateUI",
+									"sid": 700984452055751
+								}
+							],
+							"sid": 679001178438953
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "items",
+									"sid": 161693014683512
+								}
+							],
+							"sid": 941973290779077
 						}
-					],
-					"sid": 193685439282097
+					]
 				}
 			],
 			"sid": 565439335450706
@@ -822,6 +898,10 @@
 					"sid": 471913507838966
 				},
 				{
+					"eventType": "comment",
+					"text": "function"
+				},
+				{
 					"functionName": "movePlayer",
 					"functionDescription": "",
 					"functionCategory": "",
@@ -955,53 +1035,6 @@
 								}
 							],
 							"sid": 550713551600059
-						}
-					]
-				},
-				{
-					"functionName": "updateUI",
-					"functionDescription": "",
-					"functionCategory": "",
-					"functionReturnType": "none",
-					"functionIsAsync": false,
-					"functionParameters": [],
-					"eventType": "function-block",
-					"conditions": [],
-					"actions": [],
-					"sid": 799253769345369,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "pick-by-unique-id",
-									"objectClass": "barGreen",
-									"sid": 294388227206231,
-									"parameters": {
-										"unique-id": "12"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-image-scale-x",
-									"objectClass": "barGreen",
-									"sid": 954919016331713,
-									"disabled": true,
-									"parameters": {
-										"scale-x": "100 * (players.energyCurrent / players.energyMax)"
-									}
-								},
-								{
-									"id": "set-width",
-									"objectClass": "barGreen",
-									"sid": 882553522900285,
-									"parameters": {
-										"width": "20"
-									}
-								}
-							],
-							"sid": 348805860696915
 						}
 					]
 				}

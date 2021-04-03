@@ -2,7 +2,14 @@
 	"name": "items",
 	"plugin-id": "Sprite",
 	"sid": 498523450875873,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "changePlayerStat",
+			"type": "string",
+			"desc": "",
+			"sid": 858621096566442
+		}
+	],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"members": [

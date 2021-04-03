@@ -1,0 +1,27 @@
+{
+	"name": "eGameOver",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "btnGameOver",
+					"sid": 234038235091414
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 334627358044279,
+					"parameters": {
+						"layout": "Game"
+					}
+				}
+			],
+			"sid": 991900996451912
+		}
+	],
+	"sid": 370858162408623
+}

@@ -38,6 +38,18 @@
 			"type": "number",
 			"desc": "",
 			"sid": 186192813447011
+		},
+		{
+			"name": "healthMax",
+			"type": "number",
+			"desc": "",
+			"sid": 458410626857774
+		},
+		{
+			"name": "healthCurrent",
+			"type": "number",
+			"desc": "",
+			"sid": 154970548629934
 		}
 	],
 	"behaviorTypes": [
