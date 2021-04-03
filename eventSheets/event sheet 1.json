@@ -1,0 +1,1208 @@
+{
+	"name": "Event sheet 1",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "CURRENT_TILE__MAX_LIFE",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 953813568056706
+		},
+		{
+			"eventType": "variable",
+			"name": "CURRENT_TILE_LIFE",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 847900012825049
+		},
+		{
+			"eventType": "variable",
+			"name": "CURRENT_TARGET_TILE_X",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 533749436797055
+		},
+		{
+			"eventType": "variable",
+			"name": "CURRENT_TARGET_TILE_Y",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 398316778343374
+		},
+		{
+			"eventType": "variable",
+			"name": "CURRENT_TARGET_TILE_NUMBER",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 540147516480954
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Start",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 161764391724445
+						}
+					],
+					"actions": [],
+					"sid": 756345207687805
+				}
+			],
+			"sid": 162549026079957
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Mining",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-timer",
+							"objectClass": "players",
+							"sid": 786446304760096,
+							"behaviorType": "Timer2",
+							"parameters": {
+								"tag": "\"mining\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "subtract-from-eventvar",
+							"objectClass": "System",
+							"sid": 237347270807351,
+							"parameters": {
+								"variable": "CURRENT_TILE_LIFE",
+								"value": "players.miningDmg"
+							}
+						}
+					],
+					"sid": 610903594335775,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 837642551855899,
+									"parameters": {
+										"first-value": "CURRENT_TILE_LIFE",
+										"comparison": 3,
+										"second-value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "erase-tile",
+									"objectClass": "Tilemap",
+									"sid": 597837562583228,
+									"parameters": {
+										"tile-x": "CURRENT_TARGET_TILE_X",
+										"tile-y": "CURRENT_TARGET_TILE_Y"
+									}
+								},
+								{
+									"callFunction": "checkItems",
+									"sid": 353517215619349
+								},
+								{
+									"callFunction": "resetMining",
+									"sid": 129498175144940
+								}
+							],
+							"sid": 767961155718068
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 231694743374322
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 741471528235898,
+									"parameters": {
+										"first-value": "CURRENT_TILE_LIFE",
+										"comparison": 3,
+										"second-value": "CURRENT_TILE__MAX_LIFE * 0.25"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation-frame",
+									"objectClass": "damageTile",
+									"sid": 446969253750476,
+									"parameters": {
+										"frame-number": "3"
+									}
+								}
+							],
+							"sid": 456993439685983
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 879446903174727
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 232771651731784,
+									"parameters": {
+										"first-value": "CURRENT_TILE_LIFE",
+										"comparison": 3,
+										"second-value": "CURRENT_TILE__MAX_LIFE * 0.5"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation-frame",
+									"objectClass": "damageTile",
+									"sid": 648245389094593,
+									"parameters": {
+										"frame-number": "2"
+									}
+								}
+							],
+							"sid": 796899654530483
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 173787039160903
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 314156196720560,
+									"parameters": {
+										"first-value": "CURRENT_TILE_LIFE",
+										"comparison": 3,
+										"second-value": "CURRENT_TILE__MAX_LIFE *0.75"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation-frame",
+									"objectClass": "damageTile",
+									"sid": 331152319291331,
+									"parameters": {
+										"frame-number": "1"
+									}
+								}
+							],
+							"sid": 974316736601591
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-any-key-released",
+							"objectClass": "Keyboard",
+							"sid": 696067998001033
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "resetMining",
+							"sid": 136564109963014
+						}
+					],
+					"sid": 750309733141220
+				},
+				{
+					"functionName": "mining",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 974542054060176,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "players",
+									"sid": 693174768777658,
+									"parameters": {
+										"instance-variable": "mining"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "spawn damageTile over TargetTile"
+								},
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 963175363787749,
+									"parameters": {
+										"object-to-create": "damageTile",
+										"layer": "0",
+										"x": "Tilemap.TileToPositionX(CURRENT_TARGET_TILE_X)",
+										"y": "Tilemap.TileToPositionY(CURRENT_TARGET_TILE_Y)",
+										"create-hierarchy": false
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 131432878483974,
+									"parameters": {
+										"variable": "CURRENT_TILE__MAX_LIFE",
+										"value": "ArrayTileInfo.At(CURRENT_TARGET_TILE_NUMBER,1)"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 976559407824672,
+									"parameters": {
+										"variable": "CURRENT_TILE_LIFE",
+										"value": "CURRENT_TILE__MAX_LIFE"
+									}
+								}
+							],
+							"sid": 844654388162324
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-timer-running",
+									"objectClass": "players",
+									"sid": 358185582543730,
+									"behaviorType": "Timer2",
+									"parameters": {
+										"tag": "\"mining\""
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "players",
+									"sid": 242567394797984,
+									"parameters": {
+										"instance-variable": "mining",
+										"value": "true"
+									}
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "players",
+									"sid": 739924907821661,
+									"behaviorType": "Timer2",
+									"parameters": {
+										"duration": "0.2",
+										"type": "once",
+										"tag": "\"mining\""
+									}
+								}
+							],
+							"sid": 380254437610659
+						}
+					]
+				},
+				{
+					"functionName": "resetMining",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 490610407695148,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "players",
+									"sid": 186511008101378,
+									"parameters": {
+										"instance-variable": "mining",
+										"value": "false"
+									}
+								},
+								{
+									"id": "destroy",
+									"objectClass": "damageTile",
+									"sid": 582253695068426
+								},
+								{
+									"id": "stop-timer",
+									"objectClass": "players",
+									"sid": 668074954310938,
+									"behaviorType": "Timer2",
+									"parameters": {
+										"tag": "\"mining\""
+									}
+								},
+								{
+									"id": "set-animation-frame",
+									"objectClass": "damageTile",
+									"sid": 199308192288162,
+									"parameters": {
+										"frame-number": "0"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 703014979072745,
+									"parameters": {
+										"variable": "CURRENT_TILE__MAX_LIFE",
+										"value": "ArrayTileInfo.At(CURRENT_TARGET_TILE_NUMBER,1)"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 607161705141611,
+									"parameters": {
+										"variable": "CURRENT_TARGET_TILE_X",
+										"value": "0"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 391283394056793,
+									"parameters": {
+										"variable": "CURRENT_TARGET_TILE_Y",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 488519609025586
+						}
+					]
+				}
+			],
+			"sid": 372186286150894
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Items",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "function: after Tile is mined, check if TileInfoArray has Loot for this specific Tile"
+				},
+				{
+					"functionName": "checkItems",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-size",
+							"objectClass": "ArrayItem",
+							"sid": 420597671994250,
+							"parameters": {
+								"width": "0",
+								"height": "1",
+								"depth": "1"
+							}
+						}
+					],
+					"sid": 613450859099590,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "split Loot info to itemArray -> \"coal,1|potionHealth,0.5\" to \"coal,1\" ..."
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "repeat",
+									"objectClass": "System",
+									"sid": 361177031436308,
+									"parameters": {
+										"count": "tokencount(ArrayTileInfo.At(CURRENT_TARGET_TILE_NUMBER,2), \"|\")"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "push",
+									"objectClass": "ArrayItem",
+									"sid": 402606315590094,
+									"parameters": {
+										"where": "back",
+										"value": "tokenat(ArrayTileInfo.At(CURRENT_TARGET_TILE_NUMBER,2),loopindex,\"|\")",
+										"axis": "x"
+									}
+								}
+							],
+							"sid": 749998634135869
+						},
+						{
+							"eventType": "comment",
+							"text": "iterate over itemArray and check, if Loot is found -> create Loot Sprite"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each-element",
+									"objectClass": "ArrayItem",
+									"sid": 622617443969652,
+									"parameters": {
+										"axes": "x"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 466984195676239,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 761580112121734,
+											"parameters": {
+												"first-value": "tokenat(ArrayItem.CurValue,1,\",\")",
+												"comparison": 5,
+												"second-value": "random(0,1)"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object-by-name",
+											"objectClass": "System",
+											"sid": 617783307723885,
+											"parameters": {
+												"object-name": "tokenat(ArrayItem.CurValue,0,\",\")",
+												"layer": "0",
+												"x": "Tilemap.TileToPositionX(CURRENT_TARGET_TILE_X)",
+												"y": "Tilemap.TileToPositiony(CURRENT_TARGET_TILE_y)",
+												"create-hierarchy": false
+											}
+										}
+									],
+									"sid": 625044202701688
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "players",
+							"sid": 889383037817038,
+							"parameters": {
+								"object": "items"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "items",
+							"sid": 181178199077666
+						}
+					],
+					"sid": 193685439282097
+				}
+			],
+			"sid": 565439335450706
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Player",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Player movement -> can only move in one direction at the same time"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 844334365014338,
+							"parameters": {
+								"key": 39
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "players",
+							"sid": 191853133633170,
+							"parameters": {
+								"instance-variable": "direction",
+								"value": "\"right\""
+							}
+						},
+						{
+							"callFunction": "checkTargetTile",
+							"sid": 154787603673219,
+							"parameters": [
+								"1",
+								"0"
+							]
+						}
+					],
+					"sid": 472444445178272
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 816380523098266
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 157082931670051,
+							"parameters": {
+								"key": 38
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "players",
+							"sid": 586477420303961,
+							"parameters": {
+								"instance-variable": "direction",
+								"value": "\"up\""
+							}
+						},
+						{
+							"callFunction": "checkTargetTile",
+							"sid": 216313221491232,
+							"parameters": [
+								"0",
+								"-1"
+							]
+						}
+					],
+					"sid": 912352853666064
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 133930051907424
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 101789948963821,
+							"parameters": {
+								"key": 37
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "players",
+							"sid": 913799719848739,
+							"parameters": {
+								"instance-variable": "direction",
+								"value": "\"left\""
+							}
+						},
+						{
+							"callFunction": "checkTargetTile",
+							"sid": 571301081154927,
+							"parameters": [
+								"-1",
+								"0"
+							]
+						}
+					],
+					"sid": 607768872544612
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 440666414306883
+						},
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 943445358791431,
+							"parameters": {
+								"key": 40
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "players",
+							"sid": 906640626008226,
+							"parameters": {
+								"instance-variable": "direction",
+								"value": "\"down\""
+							}
+						},
+						{
+							"callFunction": "checkTargetTile",
+							"sid": 532822556259718,
+							"parameters": [
+								"0",
+								"1"
+							]
+						}
+					],
+					"sid": 471913507838966
+				},
+				{
+					"functionName": "movePlayer",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 457432302187589,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "players",
+									"sid": 964313394063203,
+									"parameters": {
+										"instance-variable": "direction",
+										"comparison": 0,
+										"value": "\"right\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "players",
+									"sid": 145823271056607,
+									"behaviorType": "TileMovement2",
+									"parameters": {
+										"control": "right"
+									}
+								}
+							],
+							"sid": 998301693223548
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 396301236376458
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "players",
+									"sid": 523985390042637,
+									"parameters": {
+										"instance-variable": "direction",
+										"comparison": 0,
+										"value": "\"down\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "players",
+									"sid": 874939881873822,
+									"behaviorType": "TileMovement2",
+									"parameters": {
+										"control": "down"
+									}
+								}
+							],
+							"sid": 756309737534369
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 612845391372329
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "players",
+									"sid": 801283722874943,
+									"parameters": {
+										"instance-variable": "direction",
+										"comparison": 0,
+										"value": "\"up\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "players",
+									"sid": 151262527377436,
+									"behaviorType": "TileMovement2",
+									"parameters": {
+										"control": "up"
+									}
+								}
+							],
+							"sid": 450660466460435
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 842068717161957
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "players",
+									"sid": 567512309888654,
+									"parameters": {
+										"instance-variable": "direction",
+										"comparison": 0,
+										"value": "\"left\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "players",
+									"sid": 148422973543967,
+									"behaviorType": "TileMovement2",
+									"parameters": {
+										"control": "left"
+									}
+								}
+							],
+							"sid": 550713551600059
+						}
+					]
+				}
+			],
+			"sid": 954225698834986
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Tilemap",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Setup Array with blocked (=1) Fields"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 912083148795036
+						}
+					],
+					"actions": [
+						{
+							"id": "request-project-file",
+							"objectClass": "AJAX",
+							"sid": 876914417253246,
+							"parameters": {
+								"tag": "\"tileInfoArray\"",
+								"file": "TileInfo.json"
+							}
+						}
+					],
+					"sid": 612355441837544
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-completed",
+							"objectClass": "AJAX",
+							"sid": 625208193465984,
+							"parameters": {
+								"tag": "\"tileinfoArray\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "load",
+							"objectClass": "ArrayTileInfo",
+							"sid": 743692355403058,
+							"parameters": {
+								"json": "AJAX.LastData"
+							}
+						}
+					],
+					"sid": 373766560682704
+				},
+				{
+					"eventType": "comment",
+					"text": "function: check Target Tile: 0 = not moving, 1 = mining, 2 = moving"
+				},
+				{
+					"functionName": "checkTargetTile",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "directionX",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 784782710919036
+						},
+						{
+							"name": "directionY",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 269388157612840
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 467871085531061,
+							"parameters": {
+								"variable": "CURRENT_TARGET_TILE_X",
+								"value": "players.TileMovement2.GridX+directionX"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 380596370066294,
+							"parameters": {
+								"variable": "CURRENT_TARGET_TILE_Y",
+								"value": "players.TileMovement2.Gridy+directionY"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 660721562447265,
+							"parameters": {
+								"variable": "CURRENT_TARGET_TILE_NUMBER",
+								"value": "Tilemap.TileAt(CURRENT_TARGET_TILE_X,CURRENT_TARGET_TILE_Y)"
+							}
+						}
+					],
+					"sid": 484508235332278,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Target Tile is empty"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 270019641567510,
+									"parameters": {
+										"first-value": "CURRENT_TARGET_TILE_NUMBER",
+										"comparison": 0,
+										"second-value": "-1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "movePlayer",
+									"sid": 313187032123024
+								}
+							],
+							"sid": 140736312504759,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "comment",
+							"text": "Target Tile is air -> target = air AND target - 1y != air"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 379591540662084
+								},
+								{
+									"id": "compare-at-xy",
+									"objectClass": "ArrayTileInfo",
+									"sid": 912474743019939,
+									"parameters": {
+										"x": "CURRENT_TARGET_TILE_NUMBER",
+										"y": "0",
+										"comparison": 0,
+										"value": "2"
+									}
+								},
+								{
+									"id": "compare-at-xy",
+									"objectClass": "ArrayTileInfo",
+									"sid": 260460551773935,
+									"parameters": {
+										"x": "Tilemap.TileAt(CURRENT_TARGET_TILE_X,CURRENT_TARGET_TILE_Y+1)",
+										"y": "0",
+										"comparison": 1,
+										"value": "2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "movePlayer",
+									"sid": 429682417150062
+								}
+							],
+							"sid": 898957115948637
+						},
+						{
+							"eventType": "comment",
+							"text": "Target Tile is empty"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 997517670369311
+								},
+								{
+									"id": "compare-at-xy",
+									"objectClass": "ArrayTileInfo",
+									"sid": 733779508376788,
+									"parameters": {
+										"x": "CURRENT_TARGET_TILE_NUMBER",
+										"y": "0",
+										"comparison": 0,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 902808032913536
+						},
+						{
+							"eventType": "comment",
+							"text": "Target Tile is destructable"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 622470007013582
+								},
+								{
+									"id": "is-moving",
+									"objectClass": "players",
+									"sid": 153303988969011,
+									"behaviorType": "TileMovement2",
+									"isInverted": true
+								},
+								{
+									"id": "compare-at-xy",
+									"objectClass": "ArrayTileInfo",
+									"sid": 901719133501189,
+									"parameters": {
+										"x": "CURRENT_TARGET_TILE_NUMBER",
+										"y": "0",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "mining",
+									"sid": 908826593076707
+								}
+							],
+							"sid": 692783172780515
+						}
+					]
+				}
+			],
+			"sid": 724062327210065
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Debug",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "DEBUG"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-tick",
+							"objectClass": "System",
+							"sid": 418597105868611
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "txtDebug2",
+							"sid": 886473465572007,
+							"disabled": true,
+							"parameters": {
+								"text": "\"current: \"&CURRENT_TILE_LIFE & \"max: \" & CURRENT_TILE__MAX_LIFE"
+							}
+						},
+						{
+							"id": "append-text",
+							"objectClass": "txtDebug2",
+							"sid": 296134253462462,
+							"disabled": true,
+							"parameters": {
+								"text": "newline & \"tar X: \"& CURRENT_TARGET_TILE_X & \"tar Y: \" & CURRENT_TARGET_TILE_Y"
+							}
+						}
+					],
+					"sid": 649884253824278
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 174226413594164,
+							"parameters": {
+								"key": 32
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "txtDebug2",
+							"sid": 314405586324146,
+							"parameters": {
+								"text": "random(0,1) & newline"
+							}
+						}
+					],
+					"sid": 576388208057471
+				}
+			],
+			"sid": 865939294873534
+		}
+	],
+	"sid": 650944810054110
+}

@@ -1,0 +1,13 @@
+{
+	"name": "items",
+	"plugin-id": "Sprite",
+	"sid": 498523450875873,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"coal",
+		"potionEnergy",
+		"potionHealth"
+	]
+}

@@ -1,0 +1,52 @@
+{
+	"name": "players",
+	"plugin-id": "Sprite",
+	"sid": 966533512048087,
+	"instanceVariables": [
+		{
+			"name": "targetUID",
+			"type": "number",
+			"desc": "",
+			"sid": 328062106937205
+		},
+		{
+			"name": "miningDmg",
+			"type": "number",
+			"desc": "",
+			"sid": 562406579404908
+		},
+		{
+			"name": "mining",
+			"type": "boolean",
+			"desc": "",
+			"sid": 266899531602011
+		},
+		{
+			"name": "direction",
+			"type": "string",
+			"desc": "",
+			"sid": 433092100638131
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "TileMovement",
+			"name": "TileMovement2",
+			"sid": 751102416588975
+		},
+		{
+			"behaviorId": "Timer",
+			"name": "Timer2",
+			"sid": 967157819082814
+		},
+		{
+			"behaviorId": "scrollto",
+			"name": "ScrollTo",
+			"sid": 404095572523333
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"clown"
+	]
+}

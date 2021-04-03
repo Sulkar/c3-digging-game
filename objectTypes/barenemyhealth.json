@@ -1,0 +1,50 @@
+{
+	"name": "barEnemyHealth",
+	"plugin-id": "Sprite",
+	"sid": 827608491093727,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "unitUID",
+			"type": "number",
+			"desc": "",
+			"sid": 751826166984244
+		},
+		{
+			"name": "maxWidth",
+			"type": "number",
+			"desc": "",
+			"sid": 890883145188845
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 200,
+						"height": 10,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 6373066,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 348795246536521,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

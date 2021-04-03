@@ -1,0 +1,57 @@
+{
+	"name": "coal",
+	"plugin-id": "Sprite",
+	"sid": 219031609861357,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 28,
+						"height": 14,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 6721443,
+						"collisionPoly": {
+							"points": [
+								0.2,
+								0.4,
+								0.5,
+								0,
+								0.7,
+								0.4,
+								0.8,
+								0.5,
+								0.9,
+								0.8,
+								0.5,
+								0.8,
+								0,
+								0.8,
+								0.2,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 949303506413175,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}
